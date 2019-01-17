@@ -1,0 +1,57 @@
+.pill-nav-container {
+  overflow: hidden;
+  height: 30px;
+  margin-bottom: 1.25rem;
+  @include breakpt {
+    height: auto;
+  }
+}
+.pill-nav {
+  display: flex;
+  overflow: auto;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+  @include breakpt {
+    flex-wrap: wrap;
+  }
+  .nav-item {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    font-family: $header-font-family;
+    color: $light-text;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s;
+    &.active {
+      border-radius: 999px;
+      color: #fff;//not needed when phase 2 launch
+      cursor: default; //not needed when phase 2 launch
+      a { color: #fff; cursor: default;}
+    }
+    &:hover {
+      color: $dark-text;
+      a { color: $dark-text; } //not needed when phase 2 launch
+     }
+
+  }
+}
+.athlete .pill-nav, .graph-card.red {
+  .nav-item {
+    &.active {
+      background-color: $red;
+      &:hover { color: #fff; }
+    }
+  }
+}
+.coach .pill-nav, .graph-card.blue {
+  .nav-item {
+    &.active {
+      background-color: $blue;
+      &:hover { color: #fff; }
+    }
+  }
+}

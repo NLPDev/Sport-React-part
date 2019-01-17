@@ -1,0 +1,110 @@
+.dashboard-menu-container {
+  margin-left: $smallMargin;
+  margin-right: $smallMargin;
+  overflow: hidden;
+  height: 50px;
+  .dashboard-menu {
+    font-family: $header-font-family;
+    display: flex;
+    overflow: auto;
+    // position:relative;
+    @include breakpt {
+      position: relative;
+      overflow: hidden;
+    }
+    // &::after {
+    //   content: '';
+    //   display: inline-block;
+    //   position: absolute;
+    //   height: 50px;
+    //   width: 30px;
+    //   right: 0;
+    //   border-bottom: 1px solid $gray-border;
+    //   @include breakpt { display: none; }
+    // }
+    .menu-shim {
+      display: inline-block;
+      height: 50px;
+      width: 30px;
+      flex-shrink: 0;
+      border-bottom: 1px solid $gray-border;
+      transition: background-color 0.25s;
+      @include breakpt { display: none; }
+    }
+  }
+  .db-menu-item {
+
+    position: relative;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    white-space: nowrap;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.75rem;
+    transition: all 0.25s;
+    &:hover { color: $dark-text; }
+    @include breakpt {
+      font-size: 0.65rem;
+      padding-left: 1rem;
+      padding-right: 0;
+    }
+    @include breakpoint(xlarge) {
+      font-size: 0.75rem;
+    }
+    color: $light-text;
+    border-bottom: 1px solid $gray-border;
+    &.active {
+      color: #fff;
+
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform-origin: bottom left;
+      transform: skew(-25deg, 0deg);
+      border-left: 1px solid $gray-border;
+      transition: background-color 0.25s;
+    }
+    &:first-child::after { border-left: none; }
+    &:last-child { padding-right: 15px; }
+  }
+
+}
+.athlete .db-menu-item.active {
+  &:first-child { background-color: $red; }
+  &::after {background-color: $red;}
+  & + .menu-shim {
+    background-color: $red;
+  }
+}
+.coach .db-menu-item.active {
+  &:first-child { background-color: $blue; }
+  &::after {background-color: $blue;}
+  & + .menu-shim {
+    background-color: $blue;
+  }
+}
+.breadcrumbs {
+  margin-top: 1rem;
+  a {
+    color: $light-text;
+    &:hover { color: $dark-text; }
+  }
+
+}
+
+//only needed for phase 1 launch, will remove when more menu items added
+// .coach .dashboard-menu-container .dashboard-menu::after {
+//   border: none;
+// }
+//

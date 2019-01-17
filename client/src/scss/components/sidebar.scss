@@ -1,0 +1,43 @@
+.sidebar-container {
+  padding-right: 0;
+  padding-left: 0;
+  // flex: 0 0 10%;
+  width: 12%;
+  position: fixed;
+  background-color: #fff;
+  // border-right: 1px solid $gray-border;
+}
+.sidebar {
+  .logo {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    img {
+      width: 35%;
+      max-width: 60px;
+    }
+  }
+  .nav-link {
+    padding: 0.8rem 10%;
+    display: block;
+    border-bottom: 1px solid $gray-border;
+    color: $light-text;
+    font-family: $header-font-family;
+    font-size: 0.75rem;
+    transition: color 0.3s;
+    &:hover, &.active { color: $dark-text; }
+    @include breakpoint(xlarge) { font-size: 0.875rem; }
+    @include breakpoint(xxlarge) {
+      font-size: 1rem;
+      padding-left: 18%;
+    }
+  }
+}
+.athlete .sidebar .nav-link.active {
+  border-bottom: 1px solid $red;
+}
+.coach .sidebar .nav-link.active {
+  border-bottom: 1px solid $blue;
+
+}

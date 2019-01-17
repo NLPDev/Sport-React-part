@@ -1,0 +1,99 @@
+//  Foundation for Sites Settings
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Global
+//   2. Breakpoints
+//   3. The Grid
+//   4. Base Typography
+//   5. Typography Helpers
+//   6. Abide
+//   7. Accordion
+//   8. Accordion Menu
+//   9. Badge
+//  10. Breadcrumbs
+//  11. Button
+//  12. Button Group
+//  13. Callout
+//  14. Card
+//  15. Close Button
+//  16. Drilldown
+//  17. Dropdown
+//  18. Dropdown Menu
+//  19. Forms
+//  20. Label
+//  21. Media Object
+//  22. Menu
+//  23. Meter
+//  24. Off-canvas
+//  25. Orbit
+//  26. Pagination
+//  27. Progress Bar
+//  28. Responsive Embed
+//  29. Reveal
+//  30. Slider
+//  31. Switch
+//  32. Table
+//  33. Tabs
+//  34. Thumbnail
+//  35. Title Bar
+//  36. Tooltip
+//  37. Top Bar
+
+@import 'node_modules/foundation-sites/scss/util/util';
+
+// 1. Global
+// ---------
+$body-font-family: 'Karla','Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$global-weight-bold: bold;
+$global-flexbox: true;
+//
+// // 2. Breakpoints
+// // --------------
+//
+$breakpoints: (
+  small: 0,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+$breakpoint-classes: (small medium large xlarge);
+//
+// // 3. The Grid
+// // -----------
+//
+$grid-column-gutter: (
+  small: 30px,
+  medium: 30px,
+);
+//
+// // 4. Base Typography
+// // ------------------
+//
+$header-font-family: 'Poppins','Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$header-font-weight: $global-weight-bold;
+$header-color: $dark-text;
+//
+// // 19. Forms
+// // ---------
+//
+$form-label-color: $body-font-color;
+$input-placeholder-color: $light-text;
+//
+// // 30. Slider
+// // ----------
+//
+$slider-height: 1.25rem;
+$slider-background: $light-gray;
+$slider-fill-background: $light-gray;
+$slider-handle-height: 1.875rem;
+$slider-handle-width: 1.875rem;
+$slider-radius: 1rem;
+//
+// // 31. Switch
+// // ----------
+//
+$switch-background: $light-gray;
+$switch-paddle-offset: 0;

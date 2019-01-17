@@ -1,0 +1,56 @@
+.util-bar {
+  text-align: center;
+  border-bottom: 1px solid $gray-border;
+  height: 50px;
+
+  margin-left: $smallMargin;
+  margin-right: $smallMargin;
+  padding-left: $smallPadding;
+  padding-right: $smallPadding;
+  background-color: #fff;
+  position: fixed;
+  z-index:10;
+  top: 49px;
+  width: 100%;
+  @include breakpt {
+    width: 90%;
+    top: 79px;
+  }
+  > .row { height: 100%; }
+  .util-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h2 { margin-bottom: 0; }
+  .cancel, .save {
+    position: absolute;
+    top: 0;
+    padding: 0.875rem 0;
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+  }
+  .cancel { left: 0; }
+  .save { right: 0; }
+}
+.dashboard .util-bar {
+  @include breakpt {
+    // margin-top: -50px;
+  }
+}
+.athlete {
+  .cancel, .save {
+    color: $red;
+    &:hover { color: darken($red, $redDarken)}
+  }
+}
+.coach {
+  .cancel, .save {
+    color: $blue;
+    &:hover { color: darken($blue, $blueDarken)}
+  }
+}

@@ -1,0 +1,40 @@
+@import "./common/variables";
+@import "./foundation";
+@import "./components/jquery.datetimepicker";
+@import "./common/global";
+@import "./common/icons";
+@import "./components/buttons";
+@import "./components/forms";
+@import "./components/calendar";
+@import "./components/confirmation";
+@import "./components/dashboard-menu";
+@import "./components/utilbar";
+@import "./components/cards";
+@import "./components/pill-nav";
+@import "./components/header";
+@import "./components/sidebar";
+@import "./components/footer";
+
+@import "./layouts/login-forget-pw";
+@import "./layouts/signup";
+@import "./layouts/profile";
+@import "./layouts/dashboard";
+@import "./layouts/invite";
+@import "./layouts/return-to-play";
+
+
+// @keyframes fade-in {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+// .tabs-panel {
+//   opacity: 0;
+// }
+// .tabs-panel.is-active{
+//   opacity: 1;
+//   animation: fade-in 1s;
+// }

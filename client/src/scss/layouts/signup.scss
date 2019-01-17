@@ -1,0 +1,263 @@
+.signup-landing .content {
+  transform: translateX(0);
+  transition: 0.6s;
+  &.out-left { transform: translateX(-100%)}
+  &.out-right { transform: translateX(100%)}
+}
+.signup-athlete, .signup-coach {
+  .content {
+    overflow: auto; //needed for FF
+  }
+  .icon-down-arrow {
+    &:hover {color: #fff; }
+  }
+}
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  // @include breakpt {
+    padding-left: 0;
+    padding-right: 0;
+  // }
+  .transition-container {
+    background-color: #fff;
+
+    flex:1 1 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    @include breakpt {
+      margin-left: 0;
+      margin-right: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .ntent-container {
+      @include breakpoint(large) { padding-top: 4rem; }
+    }
+  }
+}
+
+.motion-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+
+  transition: 0.6s;
+  @include breakpt {
+    overflow: auto; //needed for FF
+  }
+
+}
+.signup-athlete .motion-container {
+  transform: translateX(-100%);
+  &.in {
+    transform: translateX(0);
+  }
+}
+.signup-coach .motion-container {
+  transform: translateX(100%);
+  &.in {
+    transform: translateX(0);
+  }
+}
+.signup-athlete .motion-container, .signup-coach .motion-container {
+  @include breakpt {
+    transform: translate(0, -100%);
+    &.in {
+      transform: translate(0, 0);
+    }
+  }
+}
+// @keyframes slide-down {
+//   0% {transform: translateY(-100%)}
+//   100% { transform: translateY(0)}
+// }
+// @keyframes slide-up {
+//   0% {transform: translateY(0)}
+//   100% { transform: translateY(-100%)}
+// }
+.signup-progress {
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+  margin-top: -1px;
+  // margin-left: $smallMargin;
+  // margin-right: $smallMargin;
+  @include breakpt {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .step {
+    color: $dark-text;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 0.75rem;
+    @include xs-up {
+      font-size: 1rem;
+    }
+    &:first-child { padding-left: 0; }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform-origin: bottom left;
+      transform: skew(-25deg, 0deg);
+      border: 1px solid $gray-border;
+      // border-top: none;
+    }
+  }
+  .step.clickable {
+    cursor: pointer;
+  }
+  .step.active {
+    &::after {
+      border: none;
+    }
+     color: #fff;
+  }
+  .step.active + .step:not(.active)::after {
+    border-left: none;
+  }
+  .step:not(.active) + .step:not(.active)::after {
+    border-left: none;
+  }
+
+}
+.athlete .signup-progress {
+  .step.active::after { background-color: $red; }
+  .step:nth-child(1).active {
+    background-color: $red;
+  }
+  .step.active + .step.active::after {
+    border-left: 1px solid #ff7273;
+  }
+}
+.coach .signup-progress {
+  .step.active::after { background-color: $blue; }
+  .step:nth-child(1).active {
+    background-color: $blue;
+  }
+  .step.active + .step.active::after {
+    border-left: 1px solid #2c9fde;
+  }
+}
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+  .content {
+    width: 100%;
+    flex-grow: 1;
+    .signup-link a { color: #fff; }
+    @include breakpt{
+      flex-flow: row nowrap;
+    }
+  }
+}
+.row.type-tabs {
+  padding-top: 2rem;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+.tabs-wrap {
+  display: flex;
+  justify-content: space-between;
+  .tab {
+    display: block;
+    border-bottom: 1px solid $gray-border;
+    padding: 0.5rem;
+    color: $light-text;
+    @include header-text;
+  }
+  .athlete-tab.active {
+    color: $red;
+    border-color: $red;
+  }
+  .coach-tab.active {
+    color: $blue;
+    border-color: $blue;
+  }
+}
+.signup-link {
+  display: flex;
+  @include flex-align(center, middle);
+  font-size: 1.5rem;
+  color: #fff;
+  &:hover { color: #fff; }
+  @include header-text;
+  @include breakpoint(medium) {
+    font-size: 2rem;
+  }
+  @include breakpoint(large) {
+    font-size: 3rem;
+  }
+}
+.signup-link.athlete  {
+  background: url(../images/signup-a-m.jpg) no-repeat center center;
+  background-size: cover;
+}
+.signup-link.coach {
+  background: url(../images/signup-c-m.jpg) no-repeat center center;
+  background-size: cover;
+}
+@include breakpt {
+  .signup-link.athlete, .signup-coach .steps-container {
+    background-image: url(../images/signup-a-d.jpg);
+    background-size: cover;
+  }
+  .signup-link.coach, .signup-athlete .steps-container {
+    background-image: url(../images/signup-c-d.jpg);
+    background-size: cover;
+  }
+}
+.arrow-link {
+  text-align: center;
+  transform: rotate(180deg);
+  color: #fff;
+  padding: 15px 5px 5px;
+  &:hover { color: #fff; }
+}
+.parental-consent {
+  display: none;
+  &.show { display: block; }
+}
+.credit-cards {
+  margin-bottom: 1rem;
+  img {
+    border: 1px solid $gray-border;
+    margin-right: 10px;
+    &.active {
+      border: 1px solid $red;
+    }
+  }
+}
+.expiry-y {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+//stripe payment styling
+#card-number, #card-expiry, #card-cvc, #post-code {
+  margin: 0 0 $form-field-margin;
+  border-bottom: 1px solid $gray-border;
+  &:focus, &.focus {
+    border-bottom: 1px solid $light-text;
+  }
+}

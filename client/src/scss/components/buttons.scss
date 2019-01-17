@@ -1,0 +1,165 @@
+.button {
+  @include header-text;
+  font-size: 1rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.button.theme { margin-top: 2rem; }
+.button.border {
+  font-size: 0.875rem;
+  height: 2rem;
+  padding: 0 1rem;
+  font-family: $body-font-family;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid $gray-border;
+  color: $light-text;
+}
+.button.icon {
+  justify-content: flex-start;
+  width: 140px;
+  @include xs-up {
+    width: 160px;
+  }
+  padding: 0 0 0 0.5rem;
+
+  .psr-icons {
+    font-size: 0.7rem;
+    margin-right: 0.4rem;
+  }
+  .btn-text { white-space: nowrap; }
+}
+.button.border.responsive {
+
+  width: 2rem;
+  padding: 0;
+  @include breakpt {
+    justify-content: flex-start;
+    width: 160px;
+    padding: 0 0.5rem;
+  }
+  .psr-icons {
+    font-size: 0.7rem;
+    @include breakpt {
+      margin-right: 0.4rem;
+    }
+  }
+}
+.button.add.right {
+  @include breakpt { float: right; }
+}
+.sports .button.border { border: 1px solid $gray-border; }
+.athlete {
+  .button.theme {
+    background-color: $red;
+    &:hover {
+      background-color: darken($red,15%);
+    }
+    &[type=submit]:focus {
+      border: 1px solid darken($red,15%);
+    }
+  }
+  .button.border {
+    border: 1px solid $red;
+    color: $red;
+    &:hover {
+      border-color: darken($red, $redDarken);
+      color: darken($red, $redDarken);
+    }
+  }
+  .sports .button.border {
+    border: 1px solid $gray-border;
+    color: $light-text;
+    &:hover {
+      border-color: darken($red, $redDarken);
+      color: darken($red, $redDarken);
+    }
+    &.active {
+      border: 1px solid $red;
+      color: $red;
+      cursor: default;
+    }
+  }
+  .button.icon {
+    color: $red;
+    border: 1px solid $red;
+    &:hover {
+      border-color: darken($red, $redDarken);
+    }
+  }
+  .button.border.add {
+    color: #fff;
+    border: 1px solid $red;
+    background-color: $red;
+    @include breakpt {
+      color: $red;
+      background-color: transparent;
+      &:hover { color: darken($red, $redDarken); }
+    }
+  }
+}
+.coach {
+  .button.theme {
+    background-color: $blue;
+    &:hover {
+      background-color: darken($blue, $blueDarken);
+    }
+    &[type=submit]:focus {
+      border: 1px solid darken($blue, $blueDarken);
+    }
+  }
+
+  .button.border {
+    border: 1px solid $blue;
+    color: $blue;
+    &:hover {
+      border-color: darken($blue, $blueDarken);
+      color: darken($blue, $blueDarken);
+    }
+  }
+  .sports .button.border {
+    border: 1px solid $gray-border;
+    color: $light-text;
+    &:hover {
+      border-color: darken($blue, $blueDarken);
+      color: darken($blue, $blueDarken);
+    }
+    &.active {
+      border: 1px solid $blue;
+      color: $blue;
+      cursor: default;
+    }
+  }
+  .button.icon {
+    color: $blue;
+    border: 1px solid $blue;
+    &:hover {
+      border-color: darken($blue, $blueDarken);
+    }
+  }
+  .button.border.add {
+    color: #fff;
+    border: 1px solid $blue;
+    background-color: $blue;
+    @include breakpt {
+      color: $blue;
+      background-color: transparent;
+      &:hover { color: darken($blue, $blueDarken); }
+    }
+
+  }
+}
+
+.close-button { font-size: 0.8rem; }
+.button-group {
+  margin-bottom: 0.5rem;
+  @include clearfix;
+  .button {
+    margin-right: 0.5rem;
+    &:last-child { margin-right: 0; }
+  }
+  .button:last-child { margin-right: 0;}
+}
+.cancel, .save { cursor: pointer; }

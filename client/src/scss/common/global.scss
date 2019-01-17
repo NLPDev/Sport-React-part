@@ -1,0 +1,370 @@
+// react page transition
+.transition-container {
+  position: relative;
+  display: block;
+}
+.transition-enter {
+  opacity: 0.01;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.transition-enter.transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.transition-leave {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+.transition-leave.transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
+//end of react page transition
+
+//media query helper mixins
+$xs-min: 360px;
+$ms-min: 480px;
+//360 and up
+@mixin xs-up {
+  @media (min-width: $xs-min) {
+    @content;
+  }
+}
+//480 and up
+@mixin ms-up {
+  @media (min-width: $ms-min) {
+    @content;
+  }
+}
+
+//less than 360
+@mixin xs-below {
+  @media (max-width: $xs-min - 1) {
+    @content;
+  }
+}
+//less than 480
+@mixin ms-below {
+  @media (max-width: $ms-min - 1) {
+    @content;
+  }
+}
+
+//create a mobile to desktop design switch breakpoint, can be changed easily later without affecting styles that rely on the native grid system breakpoints
+// eg. $mToD: 800px
+$mToD: #{map-get($breakpoints, large)};
+@mixin breakpt {
+  @media (min-width: $mToD) {
+    @content;
+  }
+}
+//custom variables
+$smallMargin: calc(#{map-get($grid-column-gutter, small)} / -2);
+$smallPadding: calc(#{map-get($grid-column-gutter, small)} / 2);
+
+
+.content-container {
+  width: 100%;
+  // overflow-x:hidden;
+}
+.wrapper { width: 100%; }
+.content-right {
+  width: 100%;
+  @include breakpt {
+    border-left: 1px solid $gray-border;
+    // flex: 0 0 90%;
+    width: 88%;
+    margin-left: 12%;
+    padding-top: 79px;
+    min-height: 600px;
+  }
+}
+.main-content-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  max-width: none;
+  @include breakpt {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+.util-bar + .main-content-container {
+  margin-top: 50px;
+}
+.dashboard .util-bar + .main-content-container {
+  margin-top: 0;
+}
+.content-column {
+  @include flex-grid-column(12);
+  @include breakpoint(medium) { @include flex-grid-column(9)}
+  @include breakpoint(large) { @include flex-grid-column(8)}
+  @include breakpoint(xlarge) { @include flex-grid-column(7)}
+}
+.content-box {
+  margin: auto;
+  // max-width: 320px;
+
+  max-width: 340px;
+}
+h1 {
+  font-size: 1rem;
+  @include breakpoint(large) {
+    font-size: 1.25rem;
+  }
+}
+h5 { font-size: 1rem; }
+
+a, button, input, select,.reveal, div, fieldset { outline: none; }
+hr { max-width: none; }
+
+.psr-icons { cursor: pointer; }
+.small { font-size: 0.85em; }
+.small-text { font-size: 0.75rem; }
+.light-text { color: $light-text; }
+.gray-heading { font-size: 0.75rem; color: $light-text; font-family: $header-font-family; margin-bottom: 1.5rem;}
+.small-heading { font-size: 0.75rem; color: $dark-text; font-family: $header-font-family; margin-bottom: 0.5rem; }
+.light-text { color: $light-text; }
+.link-text { text-decoration: underline; cursor: pointer; transition: color 0.3s;}
+.underline { text-decoration: underline; }
+.athlete {
+  .link-text, .psr-icons.theme {
+    color: $red;
+    &:hover {color: darken($red, $redDarken)}
+  }
+}
+.coach {
+  .link-text, .psr-icons.theme {
+    color: $blue;
+    &:hover {color: darken($blue, $blueDarken)}
+  }
+}
+.page-link { font-size: 0.875rem; text-align: center; }
+.icon-x { cursor: pointer; }
+.section-heading {
+  font-family: $header-font-family;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: $dark-text;
+  margin-bottom: 1.5rem;
+}
+.group-section { margin-bottom: 1.5rem; }
+.group-heading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  h3 { margin: 0; }
+  .button-group { white-space: nowrap; margin-bottom: 0; }
+  .button { margin-bottom: 0; }
+  a {
+    white-space: nowrap;
+    color: $light-text;
+    &:hover { color: $dark-text; }
+  }
+}
+.group-heading {
+  color: $dark-text;
+  font-size: 0.875rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+.group-title {
+  color: $dark-text;
+  font-size: 0.875rem;
+  margin-bottom: 0.2rem;
+}
+.skillset-heading {
+  color: $dark-text;
+  font-size: 0.875rem;
+  width: 100%;
+  padding: 0.8rem 0;
+  margin-bottom: 0;
+}
+.content-heading {
+  font-family: $body-font-family;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 2rem;
+  @include breakpt { font-size: 1.5rem; }
+}
+.dark-text {
+  color: $dark-text;
+}
+.body-text { font-family: $body-font-family; }
+@mixin header-text { font-family: $header-font-family; }
+.header-text { @include header-text; }
+.normal { font-weight: normal;}
+
+.tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  .tab {
+    cursor: pointer;
+    flex-grow: 1;
+    border-bottom: 1px solid $gray-border;
+    padding: 0.5rem 0;
+    font-family: $header-font-family;
+    font-size: 0.875rem;
+    transition: color 0.3s;
+    &:hover, &.active { color: $dark-text; }
+  }
+}
+.athlete .tab.active {
+  border-bottom: 1px solid $red;
+}
+.coach .tab.active {
+  border-bottom: 1px solid $blue;
+}
+
+.tab-content-container {
+  position: relative;
+  display: block;
+}
+.tab-content {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  top: 0;
+  transition: opacity 0.5s;
+  &.active {
+    display: block;
+
+  }
+  &.fade-in {
+    opacity: 1;
+    position: relative;
+  }
+}
+.icon-info, .icon-pen, .icon-down-arrow {
+  color: $light-text;
+  transition: color 0.3s;
+  &:hover { color: $dark-text; }
+}
+.icon-info {
+  font-size: 1.1rem;
+  margin-left: 10px;
+  cursor: pointer;
+  vertical-align: middle;
+  outline: none;
+}
+.info-popup .icon-info {
+  font-size: 1rem;
+  margin-left: 0;
+}
+//for country info popup
+.info-popup {
+  border: 1px solid $gray-border;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s;
+  padding: 1rem;
+  position: absolute;
+  z-index: 2;
+  top: 2rem;
+  background-color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  .icon-x {
+    position: absolute;
+    right: 0;
+    top: 0.4rem;
+  }
+
+  .info-popup-header {
+    position: relative;
+  }
+  .info-popup-body {
+    font-family: $body-font-family;
+    padding: 0.5rem;
+    color: $dark-text;
+    a { color: $dark-text; }
+  }
+  &.active {
+    display: block;
+  }
+  &.fade-in {
+    opacity: 1;
+  }
+}
+.assess-info-popup {
+  h1 { margin-top: 2rem;}
+  h2 { font-size: 1rem; }
+}
+.reveal {
+  display: none;
+  color: $dark-text;
+  max-height: 85vh;
+  .section-heading {
+    border-bottom: 1px solid $gray-border;
+    padding-bottom: 0.5rem;
+  }
+  .close-button {
+    color: $light-text;
+    top: 1rem;
+  }
+  label {
+    color: $dark-text;
+  }
+}
+.divider {
+  border-bottom: 1px solid $gray-border;
+}
+.divider.full-width {
+  margin-left: -15px;
+  margin-right: -15px;
+  @include breakpt {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.athlete {
+  .divider.theme, .profile-pic-wrap.theme {
+    border-bottom: 1px solid $red;
+  }
+}
+.coach {
+  .divider.theme, .profile-pic-wrap.theme {
+    border-bottom: 1px solid $blue;
+  }
+}
+
+.profile-pic-wrap {
+  border-bottom: 1px solid $gray-border;
+  display: block;
+  padding: 8px 3px;
+  margin-bottom: 0.5rem;
+  color: $dark-text;
+  font-weight: bold;
+  &.link { cursor: pointer; }
+  a { color: $dark-text; }
+  &.page-head {
+    margin-bottom: 2.5rem;
+    // @include breakpoint(medium) {
+    //   margin-top: 2.5rem;
+    // }
+  }
+}
+[class~='profile-pic-wrap']:last-of-type { margin-bottom: 2rem;}
+.dashboard [class~='profile-pic-wrap']:last-of-type { margin-bottom: 1.5rem;}
+
+.profile-thumb {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: cover!important;
+}

@@ -1,0 +1,218 @@
+.calender-label {
+  position: relative;
+  .selected-date {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    height: 39px;
+    // border-bottom: 1px solid $gray-border;
+      // color: $dark-text;
+      // font-family: $body-font-family;
+      &.empty {
+        color: $light-text;
+      }
+  }
+  .xdsoft_datetimepicker {
+    top: 60px !important;
+    left: 0 !important;
+  }
+}
+.status-form, .achievement-form, .goal-form  {
+  @include breakpt {
+    .calender-label .xdsoft_datetimepicker {
+      right: 0;
+      left: auto !important;
+    }
+  }
+}
+
+.xdsoft_datetimepicker  {
+  font-family: $header-font-family;
+  color: $dark-text;
+  .xdsoft_prev, .xdsoft_next {
+    position: relative;
+    background-image: none;
+    text-indent: 0;
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      content: "\e904";
+      font-family: "psr-icons";
+      font-size: 0.5rem;
+      color: $dark-text;
+    }
+  }
+  .xdsoft_prev {
+    &::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+  .xdsoft_next {
+    &::after {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+  }
+  .xdsoft_today_button { display: none; }
+  .sdsoft_year { width:55px; }
+
+  .xdsoft_calendar {
+    td, th {
+      color: $dark-text;
+      border: none;
+      background-color: transparent;
+    }
+    th {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+    td {
+      position: relative;
+      &::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+
+      }
+      > div {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        padding: 0;
+      }
+      border-radius: 100%;
+      &:hover {
+        color: #fff;
+      	box-shadow: none !important;
+      }
+      &.xdsoft_today {
+      	color: $dark-text;
+      }
+      &.xdsoft_current { box-shadow: none; }
+      &.xdsoft_disabled {
+        opacity: 0.4;
+      }
+      &.xdsoft_other_month.xdsoft_disabled {
+        opacity: 0.4;
+      }
+    }
+
+    td.xdsoft_disabled.latest {
+      opacity: 1;
+    }
+
+  }
+}
+
+.xdsoft_datetimepicker.athlete {
+  .xdsoft_label > .xdsoft_select > div > .xdsoft_option {
+    &:hover { background-color: $red; }
+    &.xdsoft_current {
+      background-color: $red;
+      box-shadow: none;
+    }
+  }
+  .xdsoft_calendar {
+    td {
+      &:hover {
+      	background-color: $red !important;
+      }
+      &.xdsoft_disabled:hover {
+        background-color: transparent!important;
+      }
+      &.xdsoft_current {
+        background: $red;
+      	box-shadow: none;
+      }
+      &.xdsoft_current.xdsoft_disabled {
+        color: $dark-text!important;
+        background-color: transparent;
+        box-shadow: none!important;
+      }
+      &.xdsoft_current.xdsoft_disabled.latest {
+        color: #fff!important;
+        background-color: $red;
+        &:hover {
+          background-color: $red!important;
+        }
+      }
+    }
+  }
+}
+.xdsoft_datetimepicker.coach {
+  .xdsoft_label > .xdsoft_select > div > .xdsoft_option {
+    &:hover { background-color: $blue; }
+    &.xdsoft_current {
+      background-color: $blue;
+      box-shadow: none;
+    }
+  }
+  .xdsoft_calendar {
+    td {
+      &:hover {
+      	background-color: $blue !important;
+      }
+      &.xdsoft_disabled:hover {
+        background-color: transparent!important;
+      }
+      &.xdsoft_current {
+        background: $blue;
+      	box-shadow: none;
+      }
+      &.xdsoft_current.xdsoft_disabled {
+        color: $dark-text!important;
+        background-color: transparent;
+        box-shadow: none!important;
+      }
+      &.xdsoft_current.xdsoft_disabled.latest {
+        color: #fff!important;
+        background-color: $blue;
+        &:hover {
+          background-color: $blue!important;
+        }
+      }
+    }
+  }
+}
+
+.xdsoft_datetimepicker.history {
+  .xdsoft_calendar {
+    td {
+      &:not(.xdsoft_disabled) {
+        color: #fff;
+        background-color: $light-text;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+}
+.xdsoft_datetimepicker.history.athlete {
+  .xdsoft_calendar {
+    td {
+      &:not(.xdsoft_disabled):hover { background-color: $red; }
+      // &:not(.xdsoft_disabled).latest, &:not(.xdsoft_disabled).xdsoft_current.latest {
+      //   background-color: $red;
+      //   &:hover { background-color: darken($red, $redDarken)!important;}
+      // }
+    }
+  }
+}
+.xdsoft_datetimepicker.history.coach {
+  .xdsoft_calendar {
+    td {
+      &:not(.xdsoft_disabled):hover { background-color: $blue; }
+      // &:not(.xdsoft_disabled).latest, &:not(.xdsoft_disabled).xdsoft_current.latest {
+      //   background-color: $blue;
+      //   &:hover { background-color: darken($blue, $blueDarken)!important;}
+      // }
+    }
+  }
+}

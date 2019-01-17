@@ -1,0 +1,59 @@
+.note-form {
+  .psr-icons {
+    color: $light-text;
+    cursor: pointer;
+    &:hover { color: $dark-text; }
+  }
+  .icon-x { font-size: 0.75rem; }
+  .icon-tick { font-size: 0.85rem; }
+}
+.athlete .note-form .icon-tick {
+  color: $red;
+  &:hover { color: darken($red, $redDarken)}
+}
+.coach .note-form .icon-tick {
+  color: $blue;
+  &:hover { color: darken($blue, $blueDarken)}
+}
+.uploaded-file {
+  padding: 0.2rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid $dark-text;
+  border-radius: 2px;
+  display: inline-block;
+  color: $dark-text;
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+  .icon-x {
+    margin-left: 1rem;
+  }
+}
+.upload-wrap {
+  margin-bottom: 1rem;
+  display: inline-block;
+  cursor: pointer;
+  label {
+    font-family: $body-font-family;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
+.link-wrap {
+  position: relative;
+  .psr-icons {
+    position: absolute;
+    right: 0.5rem;
+    top: 1rem;
+    display: none;
+    &.is-visible { display: inline-block;}
+  }
+
+}
+.form-error.visible { display: block; }
+.view-note {
+  .view-link { cursor: default; }
+  .uploaded-file {
+    &:hover { border: 1px solid $anchor-color;}
+  }
+}

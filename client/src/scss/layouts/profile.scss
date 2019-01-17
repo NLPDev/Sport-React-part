@@ -1,0 +1,75 @@
+.content-container.settings {
+  .address {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $gray-border;
+  }
+  .tab-contant-container {
+    display: none;
+    opacity: 0;
+  }
+  .new-coach-email { position: relative; }
+  .right-arrow {
+    font-size: 1.25rem;
+    position: absolute;
+    right: 1px;
+    top: 30px;
+    cursor: pointer;
+  }
+  .location-label {
+    margin-bottom: 1.2rem;
+  }
+}
+.general-info {
+  .button.theme { margin-top: 0; }
+}
+
+.pic-upload-note {
+  font-size: 0.85rem;
+}
+
+.video-item {
+  .icon-remove {
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    &:hover {
+      color: $dark-text;
+    }
+  }
+}
+
+.badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  .badge-col {
+    @include flex-grid-column(12);
+    @include flex-grid-column(3)
+    @include breakpoint(xlarge) { @include flex-grid-column(2)}
+    .badge {
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%;
+      }
+      position: relative;
+      border-radius: 2px;
+      box-shadow: 0 1px 4px #ccc;
+      margin-bottom: 30px;
+      img {
+        position: absolute;
+        top: 0;
+        left: 15%;
+        width: 70%;
+      }
+    }
+  }
+  .badge.dirty {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    &.active {
+      opacity: 1;
+    }
+  }
+}

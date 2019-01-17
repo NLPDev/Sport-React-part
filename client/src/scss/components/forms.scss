@@ -1,0 +1,407 @@
+$form-field-margin: 1rem;
+// @media (max-width: 767px) and (-webkit-min-device-pixel-ratio:0) {
+//   select, textarea, input[type=text], input[type=email], input[type=password] {
+//     font-size: 16px !important;
+//   }
+// }
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'],
+[type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'],
+[type='color'], textarea, select, .selected-date {
+  &, &:focus {
+    font-family: $body-font-family;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid $gray-border;
+    // padding-left: 0;
+    // padding-right: 0;
+    color: $dark-text;
+
+  }
+  &:focus {
+    border-bottom: 1px solid $light-text;
+  }
+}
+input[readonly] {
+  background-color: transparent;
+  cursor: auto;
+}
+textarea.all-border {
+  border: 1px solid $gray-border;
+}
+label.search {
+  position:relative;
+  margin-bottom: 1.5rem;
+  &::after {
+    content: "\e90e";
+    font-family: "psr-icons";
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+  }
+}
+label, legend, .label {
+  @include header-text;
+  font-size: 0.75rem;
+  outline: none;
+ }
+legend { margin-bottom: 0.25rem; }
+legend + .custom-radio {
+  margin-top: 0.6rem;
+}
+.form-error { font-family: $header-font-family; }
+.is-invalid-input:not(:focus) {
+  background-color: transparent;
+}
+fieldset, .field-section { margin-bottom: 1.5rem; }
+.content-section { margin-bottom: 2.5rem; }
+fieldset fieldset { margin-bottom: 0; }
+// ::-webkit-input-placeholder {color: red; border: 1px solid red;}
+// :-moz-placeholder { color: red;  }
+// ::-moz-placeholder {  color: $light-text; }
+// :-ms-input-placeholder {  color: $light-text;  }
+
+.calender-label .icon-calender {
+  position: absolute;
+  right: 1px;
+  top: 35px;
+  cursor: pointer;
+  transition: color 0.3s;
+  &:hover { color: $dark-text; }
+}
+.custom-radio {
+  input[type=radio], input[type=checkbox] {
+    opacity: 0;
+  }
+  .radio-indicator {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $gray-border;
+    border-radius: 50%;
+    position: relative;
+    margin-left: -1.25rem;
+    margin-right: 0.5rem;
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: 5px;
+      top: 5px;
+      position: absolute;
+      display: none;
+    }
+  }
+  &:focus .radio-indicator {
+    border: 1px solid $light-text;
+  }
+  input[type=radio]:checked + .radio-indicator::before, input[type=checkbox]:checked + .radio-indicator::before {
+    display: block;
+  }
+}
+.athlete .custom-radio {
+  .radio-indicator::before {
+    background-color: $red;
+  }
+  input[type=radio]:checked + .radio-indicator {
+    border: 1px solid $red;
+  }
+}
+.coach .custom-radio {
+  .radio-indicator::before {
+    background-color: $blue;
+  }
+  input[type=radio]:checked + .radio-indicator {
+    border: 1px solid $blue;
+  }
+}
+.custom-checkbox {
+  // margin-bottom: $form-field-margin;
+  input[type=checkbox] {
+    opacity: 0;
+    &:focus + .checkbox-indicator {
+      border: 1px solid $light-text;
+    }
+  }
+
+  .checkbox-indicator {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $gray-border;
+    border-radius: 2px;
+    position: relative;
+    margin-left: -1.25rem;
+    margin-right: 0.5rem;
+    &::before {
+      content: "\e903";
+      font-family: "psr-icons";
+      font-size: 0.6rem;
+      line-height: 1rem;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      display: none;
+
+    }
+  }
+  input[type=checkbox]:checked + .checkbox-indicator {
+    &::before {
+      display: block;
+    }
+  }
+  .label-text {
+    display: block;
+  }
+  .form-error { margin-top: 0; }
+  span:not(.form-error) {
+    font-family: $body-font-family;
+    font-weight: normal;
+    font-size: 0.875rem;
+  }
+}
+.api-error {
+  display: none;
+  color: $input-error-color;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;fon
+  &.is-visible {
+    display: block;
+  }
+}
+.custom-select {
+  position: relative;
+  margin: 0 0 $form-field-margin;
+  cursor: pointer;
+  .selected {
+    border-bottom: 1px solid $gray-border;
+    position: relative;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: calc(0.5rem - 1px);
+    padding-bottom: calc(0.5rem - 1px);
+    &:not(.read-only)::after {
+      content: "\e904";
+      font-family: "psr-icons";
+      font-size: 0.5rem;
+      color: $light-text;
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:hover {
+      &:not(.read-only)::after { color: $dark-text;}
+    }
+    &:focus {
+      border-bottom: 1px solid $light-text;
+    }
+  }
+  .select-list {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    max-height: 16rem;
+    overflow-y: auto;
+    background-color: #fff;
+    border-bottom: 1px solid $gray-border;
+    &.show {
+      display: block;
+    }
+
+    // &::-webkit-scrollbar-track
+    // {
+    //   -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+    // }
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 8px;
+      background-color: #eee;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: #bbb;
+      // -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+
+    li {
+      padding: 0.2rem 0.5rem;
+      border-left: 1px solid $gray-border;
+      border-right: 1px solid $gray-border;
+      border-bottom: 1px solid $gray-border;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  .form-error {
+    margin-top: 0.75rem;
+  }
+}
+.slider {
+  border-radius: 1rem;
+  .slider-handle {
+    background-color: #fff;
+    border: 1px solid $gray-border;
+    outline: none;
+    box-shadow:  1px 1px 1px gray;
+    &::after {
+      content: '';
+      position:absolute;
+      top: 25%;
+      bottom: 0;
+      left: 25%;
+      right: 0;
+      width: 50%;
+      height: 50%;
+      background-color: $red;
+      border-radius: 50%;
+
+    }
+  }
+  .slider-fill { border-radius: 1rem;}
+}
+.athlete .slider .slider-handle::after { background-color: $red; }
+.coach .slider .slider-handle::after { background-color: $blue; }
+
+.switch-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-border;
+  .switch-label, .switch  {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.switch-paddle {
+  border: 1px solid $gray-border;
+  border-radius: 1rem;
+  &::after {
+    border: 1px solid $gray-border;
+    border-radius: 1rem;
+    box-shadow: inset -1px -1px 0 gray;
+  }
+}
+.athlete input:checked ~ .switch-paddle { background-color: $red; }
+.coach input:checked ~ .switch-paddle { background-color: $blue; }
+.switch-block {
+  .switch {
+    margin-top: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .value.left { margin-right: 1rem;}
+  .value.right { margin-left: 1rem;}
+}
+
+label + .dark-text {
+  margin-top: 0.5rem;
+}
+.profile-upload-wrap {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem auto;
+  .add-btn-lg, .profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .add-btn-lg {
+    border: 1px dashed $gray-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .profile-pic {
+    display: none;
+    position: absolute;
+    z-index:1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $gray-border;
+    background-size: cover !important;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: none;
+    }
+    canvas { width: 100%; }
+    &.show {
+      display: block;
+    }
+    &.landscape img {
+      width: auto;
+      height: 100%;
+    }
+    &.portrait img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+}
+
+label[for=profilePic] { cursor: pointer; }
+.athlete .add-btn-lg .icon-plus{
+  color: $red;
+}
+.coach .add-btn-lg .icon-plus{
+  color: $blue;
+}
+
+.add-wrap {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: color 0.25s;
+  .icon-add {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+  span { vertical-align: middle;}
+}
+.athlete .add-wrap {
+  color: $red;
+  &:hover { color: darken($red, $redDarken)};
+}
+.coach .add-wrap {
+  color: $blue;
+  &:hover { color: darken($blue, $blueDarken)};
+}
+.gpa-section {
+  margin-bottom: 1.5rem;
+}
+.gpa-wrap {
+  color: $red;
+  margin-top: 0.5rem;
+}
+.gpa-value {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+.gpa-slider {
+  margin-bottom: 0.5rem;
+}
+.gpa-readings {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+textarea.status-goal {
+  min-height: 6rem;
+}

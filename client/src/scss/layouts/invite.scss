@@ -1,0 +1,28 @@
+.pending-invite {
+  border-radius: 2px;
+  box-shadow: 0 0 4px #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  .psr-icons {
+    cursor: pointer;
+  }
+  .icon-resend {
+    margin-right: 20px;
+    font-size: 1.1rem;
+  }
+  .icon-trash {
+    font-size: 1.2rem;
+  }
+}
+.athlete .pending-invite {
+  .psr-icons {
+    color: $red;
+    &:hover { color: darken($red, $redDarken); }
+  }
+}
+.coach .pending-invite {
+  .psr-icons {
+    color: $blue;
+    &:hover { color: darken($blue, $blueDarken); }
+  }
+}

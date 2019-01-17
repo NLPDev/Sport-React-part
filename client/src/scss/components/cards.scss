@@ -1,0 +1,416 @@
+.card {
+  box-shadow: 0 0 4px #ccc;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  .divider { margin: 0.5rem auto; }
+  img { width: 100%; }
+  .subheading { font-size: 0.875rem; }
+  .info-wrap { @include clearfix; }
+  .title-wrap {
+    position: relative;
+    .edit-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      .icon-pen { line-height: 1.75;}
+      // top: 50%;
+      // transform: translateY(-50%);
+    }
+  }
+}
+.card.content-card {
+  .header-img {
+    height: 80px;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    margin: -0.3125rem -0.625rem 0 -0.625rem;
+    text-align: center;
+    @include xs-up {
+      height: 100px;
+    }
+  }
+  .col-left {
+    margin-top: -2rem;
+    @include xs-below { padding-right: 5px; }
+    .team-logo-wrap {
+      width: 75px;
+      height: 75px;
+      position: relative;
+      z-index: 0;
+      background-size: cover!important;
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+  }
+  .col-right {
+    padding-top: 1rem;
+    @include xs-below { padding-left: 5px; }
+  }
+
+  .custom-select {
+    .selected {
+      border-bottom: none;
+      padding: 0;
+      margin-bottom: 0.5rem;
+      &::after { font-size: 6px;}
+    }
+    .select-list.show { border-top: 1px solid $gray-border; }
+  }
+
+}
+.card.content-card.red {
+  .header-img {
+    background: url(../images/team-a.png) center center no-repeat #ec494b;
+    background-size: auto 100%;
+  }
+}
+.card.content-card.blue {
+  .header-img {
+    background: url(../images/team-c.png) center center no-repeat #0081c8;
+    background-size: auto 100%;
+  }
+}
+
+.card.content-card.team-empty {
+  box-shadow: none;
+  border: 2px dashed $gray-border;
+  .header-img {
+    background-color: $gray-border;
+  }
+  .team-logo-wrap {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed $gray-border;
+      border-radius: 50%;
+    }
+  }
+}
+
+@include breakpt {
+  .team-block {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    .group-section {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0; //to make the team block and lastest awards line up nicely. in real world may not work, as user may have different numbers of awards
+      .content-card {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.card.award-card {
+  margin-top: 1rem;
+  .col-left {
+    margin-top: -1rem;
+    width: 105px;
+  }
+}
+.card.award-card {
+  .col-left {
+
+  }
+}
+.card.school-card {
+  margin-top: 1rem;
+  .col-left {
+    width: 90px;
+  }
+  .gpa {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      border-radius: 50%;
+      border: 3px solid $red;
+    }
+    .gpa-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $red;
+      font-family: $header-font-family;
+      .gpa-value {
+        font-size: 1.6rem;
+        line-height: 0.8;
+        padding-top: 0.3rem;
+      }
+    }
+  }
+}
+
+.athlete {
+  .graph-card { border-top: 3px solid $red; }
+}
+.coach {
+  .graph-card { border-top: 3px solid $blue; }
+}
+.graph-card.red {border-top: 3px solid $red; }
+.graph-card.blue {border-top: 3px solid $blue; }
+
+.graph { margin-top: 1rem;}
+.y-label {
+  padding: 0 0.5rem 0 0;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: -0.5rem;
+  position: relative;
+}
+.bar-chart .y-label {
+  margin-bottom: 1.75rem;
+}
+.line-chart .y-label {
+  margin-bottom: 1.25rem;
+}
+.x-label {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+.line-chart + .graph-legend {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.legend-item { display: inline-block; }
+.legend-title { margin-right: .75rem;}
+
+.bar-chart, .line-chart {
+  // width: 100%;
+  // height: 160px;
+  // max-width: 400px;
+  // margin: auto;
+  display: flex;
+  .graph-right { flex-grow: 1; }
+}
+.bar-chart {
+  margin-top: 2.5rem;
+
+  .y-title {
+    position: absolute;
+    top: -3rem;
+    white-space: nowrap;
+  }
+  .chart-container {
+    position: relative;
+    height: 160px;
+  }
+  .chart-base {
+    // position: absolute;
+    // top: 0;
+    // width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .chart-line { margin: 0; }
+  }
+  .chart-data {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .data-group {
+    display: flex;
+  }
+  .bar-wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    .circle {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      overflow: hidden;
+      &.red { box-shadow: 0 0 0 2px $red; }
+      &.light-blue { box-shadow: 0 0 0 2px $light-blue; }
+      &.blue { box-shadow: 0 0 0 2px $blue; }
+      &.green { box-shadow: 0 0 0 2px $green; }
+    }
+  }
+  .bar {
+    flex-shrink: 0;
+    width: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    &.red { background-color: $red;}
+    &.light-blue { background-color: $light-blue;}
+    &.blue { background-color: $blue;}
+    &.green { background-color: $green;}
+  }
+  // .data-group:first-child .bar-wrap:first-child .bar { margin-left: 0; }
+  // .data-group:last-child .bar-wrap:last-child .bar{ margin-right: 0; }
+
+  .connect-line {
+    flex-shrink: 0;
+    height: 10px;
+    width:2px;
+    &.red { background-color: $red; }
+    &.light-blue { background-color: $light-blue; }
+    &.blue { background-color: $blue; }
+    &.green { background-color: $green; }
+  }
+}
+
+.line-chart {
+  height: 190px;
+  margin-top: 1rem;
+  .trangle {
+    // fill: $light-text;
+    font-size: 1rem;
+  }
+  .graph-right > svg { height: 190px; }
+}
+
+.radar-chart {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+.grid-line {
+  fill: none;
+  stroke: $gray-border;
+  stroke-width: 1;
+}
+.data-line {
+  fill: none;
+  stroke-width: 2;
+  stroke: $gray-border;
+  &.red { stroke: $red; }
+  &.blue { stroke: $blue; }
+}
+
+.graph-card {
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    background-color: #fff;
+    display: inline-block;
+    border: 2px solid $gray-border;
+    border-radius: 50%;
+  }
+  .dot.red {
+    border: 2px solid $red;
+  }
+  .dot.medium-red {
+    border: 2px solid $medium-red;
+  }
+  .dot.light-red {
+    border: 2px solid $light-red;
+  }
+  .dot.blue {
+    border: 2px solid $blue;
+  }
+  .dot.medium-blue {
+    border: 2px solid $medium-blue;
+  }
+  .dot.light-blue {
+    border: 2px solid $light-blue;
+  }
+
+}
+
+svg {
+  // width: calc(100% - 1px);  //bug fix for svg not show up
+  // height: 100%;
+  text {
+    fill: $light-text;
+  }
+  .dot {
+    fill: #fff;
+    stroke: $gray-border;
+    stroke-width: 2;
+    &.red { stroke: $red; }
+    &.blue { stroke: $blue; }
+  }
+  .polygon {
+    fill: rgba(100,100,100,0.05);
+    &.red { fill: rgba(255,0,0,0.05); }
+    &.blue { fill: rgba(0,0,255,0.05); }
+  }
+}
+.athlete, .graph-card.red {
+  .data-line { stroke: $red; }
+  .data-line.blue { stroke: $blue; }
+  svg .dot { stroke: $red; }
+  svg .dot.blue { stroke: $blue; }
+  .legend-item .dot {
+    border-color: $red;
+    &.medium { border-color: $medium-red; }
+    &.light { border-color: $light-red; }
+    &.blue { border-color: $blue; }
+  }
+  .polygon {
+    fill: rgba(255,0,0,0.05);
+  }
+}
+.coach, .graph-card.blue {
+  .data-line { stroke: $blue; }
+  .data-line.red { stroke: $red; }
+  svg .dot { stroke: $blue; }
+  svg .dot.red { stroke: $red; }
+  .legend-item .dot {
+    border-color: $blue;
+    &.medium { border-color: $medium-blue; }
+    &.light { border-color: $light-blue; }
+    &.red { border-color: $red; }
+  }
+  .polygon {
+    fill: rgba(0,0,255,0.05);
+  }
+}
+.grid-num {
+  text-anchor: end;
+  alignment-baseline: middle;
+}
+.card.note-card {
+  transition: box-shadow 0.25s;
+  .view-link {
+    color: $light-text;
+    // &:hover { color: $dark-text; }
+  }
+  .icon-trash {
+    margin-right: 1rem;
+    font-size: 1.1rem;
+  }
+  .col-right {
+    display: flex;
+    align-items: center;
+  }
+  &:hover {
+    box-shadow: 0 0 8px #999;
+  }
+}
+.view-note .card.note-card {
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+}

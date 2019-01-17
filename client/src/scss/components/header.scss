@@ -1,0 +1,244 @@
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  // height: 50px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid $gray-border;
+  @include breakpt {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+.content-container {  padding-top: 49px; }
+.content-container.login { padding-top: 0; }
+.signup-landing, .signup-athlete, .signup-coach, .invite-accepted {
+  .header {
+    margin-left: 0;
+    margin-right: 0;
+    @include breakpt {
+      position: relative;
+      width: auto;
+    }
+  }
+}
+
+@include breakpt {
+  .header {
+
+  }
+  .content-container { padding-top: 0; }
+}
+.content-right {
+  @include breakpt {
+    .header {
+      width: 88%;
+      left: auto;
+    }
+  }
+}
+.header {
+  .header-bar {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    @include breakpt {
+      text-align: left;
+    }
+  }
+  .logo {
+    position: absolute;
+    left:0;
+    width: 28px;
+    height: 28px;
+    img { width: 100%; }
+    @include breakpt {
+      display: none;
+    }
+
+  }
+  .title {
+    margin-top: 3px;
+    margin-bottom: 3px;
+
+    width: 200px;
+    font-size: 16px;
+    display: inline-block;
+    @include breakpt {
+      margin-left: 5rem;
+    }
+  }
+  .nav-toggler {
+    width: 24px;
+    height: 20px;
+    position: absolute;
+    right:0;
+    top: 18px;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: $dark-text;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.3s ease-in-out;
+      &:nth-child(1) { top: 0;}
+      &:nth-child(2) { top: 7px;}
+      &:nth-child(3) { top: 7px;}
+      &:nth-child(4) { top: 14px;}
+    }
+  }
+  .header-nav.mobile {display: none;}
+  .header-nav {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    text-align: center;
+    font-family: $header-font-family;
+    .nav-wrap {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .nav {
+      width: 100%;
+      margin-top: -50px;
+      font-size: 1.2rem;
+      a {
+        color: $light-text;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        display: block;
+        border-bottom: 1px solid $gray-border;
+        &.active {
+          color: $dark-text;
+        }
+      }
+    }
+  }
+  &.expanded {
+    span:nth-child(1), span:nth-child(4) {
+      width: 0;
+      left: 50%;
+      top: 7px;
+    }
+    span:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+  &.show-profile {
+    @include breakpt {
+      // height:
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}
+.athlete .header-nav .nav a.active { border-color: $red;}
+.coach .header-nav .nav a.active { border-color: $blue;}
+
+.header.full-width {
+  .header-bar { text-align: center; }
+  .logo {
+    display: block;
+  }
+  .title {
+    @include breakpt { margin-left: 0; }
+  }
+}
+.profile-bar {
+  position: absolute;
+  top: 10px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  @include breakpt {
+    top: 0;
+    right: 0;
+  }
+  .header-profile-pic-wrap {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    @include breakpt { margin-right: 15px;}
+  }
+  .profile-thumb {
+    margin-right: 0;
+    background-size: cover !important;
+    @include breakpt {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  .online-sign {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    border: 2px solid $red;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #fff;
+    background-color: #fff;
+  }
+  .user-stat { margin-right: 15px; }
+  .section-heading { margin-bottom: 0; }
+  .small { font-size: 0.75rem; }
+  .down-arrow { font-size: 6px; cursor: pointer; }
+}
+.profile-popup {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  background-color: #fff;
+  // margin-top: 1px;
+  border-top: 1px solid $gray-border;
+  padding: 15px 15px 0;
+
+  .popup-head {
+    display: flex;
+  }
+  .section-heading { margin-bottom: 0; }
+  p {margin-bottom: 0.3rem;}
+  .popup-body {
+    border-top: 1px solid $gray-border;
+    border-bottom: 1px solid $gray-border;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  ul { margin-bottom: 0.5rem; }
+  .unread::after {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 4px;
+    vertical-align: text-top;
+    border-radius: 50%;
+    background-color: $red;
+  }
+  .signout-link {
+    color: $light-text;
+    &:hover { color: $dark-text;}
+  }
+
+}
+.profile-thumb.lg {
+  width: 75px;
+  height: 75px;
+  margin-right: 20px;
+}

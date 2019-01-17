@@ -1,0 +1,43 @@
+footer {
+  @include header-text;
+  position: relative;
+  z-index: 10;
+  background-color: #fff; 
+  text-align: center;
+  border-top: 1px solid $gray-border;
+  .socials {
+    padding: 2.5rem 0 0.5rem;
+    li { display: inline-block;}
+    .social-icon {
+      padding: 1rem;
+      font-size: 1.3rem;
+      color: $dark-text;
+    }
+  }
+  .footer-nav {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $gray-border;
+    li {
+      display: inline-block;
+      a {
+        padding: 0 0.6rem;
+        border-right: 1px solid $light-text;
+        display: inline-block;
+        line-height: 0.8rem;
+
+        color: $light-text;
+        font-size: 0.875rem;
+        @include xs-up {
+          padding: 0 1rem;
+        }
+      }
+      &:last-child a, .menu-item-faq { border-right: none; }
+      @include breakpoint(medium) {
+        .menu-item-faq { border-right: 1px solid $light-text; }
+      }
+    }
+  }
+  .copyright {
+    padding: 1rem 0;
+  }
+}

@@ -1,0 +1,35 @@
+.content-container.login, .content-container.forget-password, .content-container.reset-password {
+  display: flex;
+  color: #fff;
+  height: 100vh;
+  background: url('../images/login-bg.jpg') center center no-repeat;
+  background-size: cover;
+  .logo {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    @include xs-up {
+      margin-bottom: 4rem;
+    }
+    @include ms-up {
+      margin-bottom: 6rem;
+    }
+  }
+  a, label {color: #fff; }
+  form {
+    padding-bottom: 0.5rem;
+    @include xs-up {
+      margin-bottom: 2rem;
+    }
+    @include ms-up {
+      margin-bottom: 3rem;
+    }
+  }
+  input, input:focus { color: #fff; }
+  .page-link { margin-bottom: 0; }
+
+  .content { width: 100%; margin-bottom: 1rem; }
+
+}
+.forget-password {
+  button[type=submit] { margin-top: 2rem; }
+}

@@ -1,0 +1,114 @@
+.confirmation-container {
+  position: relative;
+}
+.confirmation { display: none; }
+
+.confirmation-lg, .save-confirmation, .empty-popup, .generic-popup,
+.cancel-membership-confirmation, .two-step-confirmation {
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  .close-button {
+    top: 20px;
+    right: 20px;
+    color: #fff;
+  }
+  .tick-wrap { margin-bottom: 5rem;}
+  .icon-tick-thin { font-size: 4.5rem;}
+
+  h5, a { color: #fff; }
+  h5 {margin-bottom: 1.5rem;}
+  .button { padding-left: 4rem; padding-right: 4rem; margin-top: 1.5rem;}
+  .confirmation-content {
+    display: none;
+  }
+}
+.confirmation-lg {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height:100vh;
+  left: 0;
+  right: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include breakpt {
+    height: auto;
+    bottom: 0;
+  }
+
+}
+.signup-athlete, .signup-coach {
+  .confirmation-lg {
+    @include breakpt {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+.connected-confirmation .confirmation-content {
+  display: block;
+}
+.athlete .confirmation-lg, .save-confirmation.athlete,
+.empty-popup.athlete, .generic-popup.athlete, .cancel-membership-confirmation.athlete,
+.two-step-confirmation.athlete {
+    background-color: $light-red-bg;
+}
+.coach .confirmation-lg, .save-confirmation.coach,
+.empty-popup.coach, .generic-popup.coach, .cancel-membership-confirmation.coach,
+.two-step-confirmation.coach {
+    background-color: $light-blue-bg;
+}
+@keyframes spin {
+  0% { transform: rotate(0)}
+  100% {transform: rotate(360deg)}
+}
+.spinner {
+  font-size: 4rem;
+  animation: spin 2s linear infinite;
+  line-height: 1em;
+  display: inline-block;
+}
+.connected-confirmation {
+  display: flex;
+}
+
+.save-confirmation, .empty-popup, .generic-popup,
+.cancel-membership-confirmation, .two-step-confirmation {
+  border: none;
+  position: relative;
+  text-align: center;
+  border-radius: 1rem;
+  @include breakpt {
+    height: 80%;
+  }
+  .flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+// .save-confirmation, .cancel-membership-confirmation {
+//   @include breakpt {
+//     height: 80%;
+//   }
+// }
+.empty-popup, .generic-popup {
+  max-width: 80%;
+  min-height: 300px;
+  height: 300px;
+  margin: auto;
+  padding: 1rem 3rem;
+  // border-radius: 1rem;
+}
+.cancel-membership-confirmation, .two-step-confirmation {
+  .spinner { display: none;}
+  .confirm-content {
+    display: block;
+  }
+}
+.reveal .dismiss {
+  text-decoration: underline;
+  cursor: pointer;
+}
