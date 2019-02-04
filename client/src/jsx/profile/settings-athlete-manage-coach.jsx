@@ -132,3 +132,58 @@ class SettingsAthleteManageCoach extends Component {
 }
 
 export default observer(SettingsAthleteManageCoach)
+
+
+
+
+render() {
+    return (
+      <div className="tab-content" ref="me">
+        <UtilBar title="Manage Coaches" onCancel={this.onCancel} onSave={this.onSave}/>
+        <div className="row align-center main-content-container">
+          <div className="column content-column ">
+            <div className="profile-pic-wrap page-head">
+              <div className="profile-thumb" style={{background: "url(" +
+              ((this.props.coach && this.props.coach.profile_picture_url) || AvatarBlue)
+              + ") #fff no-repeat center center"}}></div>
+              {/* <img src={this.props.coach && this.props.coach.profile_picture_url || DummyPic}
+                   className="profile-thumb" /> */}
+              <span>{(this.props.coach && this.props.coach.first_name) + ' ' +
+                     (this.props.coach && this.props.coach.last_name)}</span>
+            </div>
+            <form>
+              <fieldset>
+                <legend className="section-heading">Manage Permissions</legend>
+                <p className="dark-text">This coach is currently linked to the following features of your PSR account. You can edit what they can control here.</p>
+                {this.props.permissions.map(p =>
+                  <label className="custom-radio">
+                    <input type="checkbox" name="permission"
+                           checked={p.assessor_has_access}
+                           value={p.assessment_top_category_name}
+                           onChange={(e) => this.setPermission(e, p.assessment_top_category_id)}/>
+                    <span className="radio-indicator"></span><span>{p.assessment_top_category_name}</span>
+                  </label> )}
+              </fieldset>
+              <fieldset>
+                <legend className="section-heading">Unlink coach account</legend>
+                <p className="dark-text">Unlinking a coach's account will remove them from your PSR account. You will however keep all assessments done by them.</p>
+                <label className="custom-radio">
+                  <input type="radio" name="unlink" value="link"
+                         onChange={() => { this.coachLinked = true }}
+                         checked={this.coachLinked}/>
+                  <span className="radio-indicator"></span><span>Link</span>
+                </label>
+                <label className="custom-radio">
+                  <input type="radio" name="unlink" value="unlink"
+                         onChange={() => { this.coachLinked = false }}
+                         checked={!this.coachLinked}/>
+                  <span className="radio-indicator"></span><span>Unlink (this cannot be undone!)</span>
+                </label>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    )
+  }
